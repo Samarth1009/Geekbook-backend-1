@@ -10,6 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "color": "^4.1.0",
+    "colors": "^1.4.0",
+    "custom-env": "^2.0.1",
+    "dotenv": "^10.0.0",
+    "env": "0.0.2",
     "express": "^4.17.2",
     "mongodb": "^4.2.2",
     "mongoose": "^6.1.3",

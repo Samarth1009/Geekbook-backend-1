@@ -1,13 +1,13 @@
-//Connection file to mongo db
 const mongoose = require("mongoose");
-//import colors from "colors";
-
+const colors = require("colors");
+require('dotenv').config()
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI, {
+    // console.log(process.env.MONGO_URI)
+    const conn = await mongoose.connect(String(process.env.MONGO_URI), {
       useUnifiedTopology: true,
       useNewUrlParser: true,
-      useCreateIndex: true,
+      // useCreateIndex: true,
     });
     console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.underline);
   } catch (error) {
