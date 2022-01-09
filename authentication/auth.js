@@ -23,11 +23,11 @@ router.post("/signin", async (req, res) => {
   const { username, password } = req.body;
   const user = await User.findOne({ username });
   if (user && (await user.matchPassword(password))) {
-    res.send("Successfully signed in");
-    console.log("Successfully signed in");
+    res.status(200).send("Successfully signed in");
+    
   } else {
-    res.send("Invalid Username or Password");
-    throw new Error("Invalid Username or Password");
+    res.status(500).send("Invalid Username or Password");
+    
   }
 });
 
