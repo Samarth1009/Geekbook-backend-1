@@ -35,33 +35,29 @@ router.post("/getUser", async (req, res) => {
     res.send(user);
   } catch (error) {
     res.status(500).send(error);
-    res.status(200).send("Successfully signed in");  
-  } 
-  else {
-    res.status(500).send("Invalid Username or Password"); 
+    res.status(200).send("Successfully signed in");
   }
 });
 
-router.post("/updateuser", async(req, res) =>{
+router.post("/updateuser", async (req, res) => {
   const username = req.body.username;
-   const user = await User.findOne({username});
-   if(user){
-     user.name = req.body.name || user.name;
-     user.email = req.body.email || user.email;
-     user.password = req.body.password || user.password;
-     user.country = req.body.country || user.country;
-     user.state = req.body.state || user.state;
-     user.city = req.body.city || user.city;
-     user.profession = req.body.profession || user.profession;
-     user.institution = req.body.institution || user.institution;
-     user.pic = req.body.pic || user.pic;
-     
-     const updatedUser = await user.save();
-     res.status(200).send(updatedUser);
-    }
-    else{
-      res.status(404).send("User not found");
-    }
+  const user = await User.findOne({ username });
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    user.password = req.body.password || user.password;
+    user.country = req.body.country || user.country;
+    user.state = req.body.state || user.state;
+    user.city = req.body.city || user.city;
+    user.profession = req.body.profession || user.profession;
+    user.institution = req.body.institution || user.institution;
+    user.pic = req.body.pic || user.pic;
+
+    const updatedUser = await user.save();
+    res.status(200).send(updatedUser);
+  } else {
+    res.status(404).send("User not found");
+  }
 });
 
 module.exports = router;
