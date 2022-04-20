@@ -53,6 +53,21 @@ router.post("/getUser", async (req, res) => {
   }
 });
 
+//get user data from user id
+
+router.get("/getUser/:id", async (req, res) => {
+  
+  const user = await User.find({
+    _id: req.params.id,
+  });
+  try {
+    res.send(user);
+  } catch (error) {
+    res.status(500).send(error);
+    res.status(200).send("Successfully signed in");
+  }
+});
+
 
 router.post("/updateuser", async (req, res) => {
   const username = req.body.username;
